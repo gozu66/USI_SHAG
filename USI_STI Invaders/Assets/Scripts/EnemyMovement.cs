@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour {
         //Enemy moves left or right
         //Sound is played
         //If enemy block has reached screen edge, mocve down, revese direction
-        transform.Translate(new Vector3(1, 0, 0));
+        transform.position += new Vector3(0.1f, 0, 0); ;// (new Vector3(1, 0, 0));
     }
 
     void OnTriggerEnter2D(Collider2D other)
