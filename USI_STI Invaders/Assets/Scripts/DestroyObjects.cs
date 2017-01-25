@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class DestroyObjects : MonoBehaviour 
 {
-	void OnBecameInvisible()
+	void DestroyTemp()
 	{
-		Destroy(gameObject);
+		gameObject.SetActive(false);
+	}
+
+	void OnEnable()
+	{
+		Invoke("DestroyTemp", 3.0f);
+	}
+
+	void OnDisable()
+	{
+		CancelInvoke();
 	}
 }
