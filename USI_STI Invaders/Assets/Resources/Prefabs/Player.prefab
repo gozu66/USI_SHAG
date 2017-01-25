@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212915668769710720}
   - component: {fileID: 114528233302141922}
   - component: {fileID: 114742770338299922}
+  - component: {fileID: 114682852829154936}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -54,6 +55,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1726192404151868, guid: 9c83a6de93efaa74eab1f483959772f0, type: 2}
+  firstBullet: 0.01
+  fireTime: 0.5
+  pooledAmount: 15
+--- !u!114 &114682852829154936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344771022314766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d00fcdac0b1eb4888bc069c8a90303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 0
+  healthText: {fileID: 0}
+  basicDamage: 10
 --- !u!114 &114742770338299922
 MonoBehaviour:
   m_ObjectHideFlags: 1
