@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/RF_Test.unity
+- path: Assets/Scenes/RB_Test.unity
   isLoaded: 1
   isActive: 1
