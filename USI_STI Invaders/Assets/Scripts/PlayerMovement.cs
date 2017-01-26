@@ -19,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
 		if(transform.position.x < minX)
 		{
 			transform.position = new Vector3(minX, transform.position.y, transform.position.z);
+
 		}
 		else if(transform.position.x > maxX)
 		{
 			transform.position = new Vector3(maxX, transform.position.y, transform.position.z);
+
 		}
 	}
 }
