@@ -17,10 +17,10 @@ public class EnemyAI : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Respawn")
+        if(other.tag == "PlayerBullet")
         {
-            Destroy(other.gameObject);  //RE-Pool bullet object
-            Destroy(gameObject);        //Destroy enemy instance
+            other.gameObject.SetActive(false);  //RE-Pool bullet object
+            Die();                              //Destroy enemy instance
         }
     }
 
@@ -51,5 +51,12 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
         
+    }
+
+    void Die()
+    {
+        //Called by animation event
+        this.transform.parent.GetComponent<EnemyGroup>().RemoveEnemy(this);
+        Destroy(gameObject);
     }
 }

@@ -13,11 +13,17 @@ public class EnemyGroup : MonoBehaviour {
 
     public float shootIntervile;
 
-    EnemyAI[] enemies;
+    //EnemyAI[] enemies;
+    List<EnemyAI> enemies;
 
     void Start ()
-    {       
-        enemies = this.GetComponentsInChildren<EnemyAI>();
+    {
+        enemies = new List<EnemyAI>();
+        EnemyAI[] enemiesComp = this.GetComponentsInChildren<EnemyAI>();
+        foreach(EnemyAI ec in enemiesComp)
+        {
+            enemies.Add(ec);
+        }
         InvokeRepeating("MoveTick", initialDelay, delay);
         InvokeRepeating("PickShooter", shootIntervile, shootIntervile);
     }
@@ -41,28 +47,35 @@ public class EnemyGroup : MonoBehaviour {
     {
         float screenEdge = 8.5f;
 
-        foreach(EnemyAI e in enemies)
+        if (enemies.Count > 0)
         {
-            //float posX = e.transform.position.x + e.transform.parent.position.x;
-            float posX = e.transform.position.x;
-            Debug.Log(screenEdge - Mathf.Abs( posX));
+            foreach (EnemyAI e in enemies)
+            {
+                //float posX = e.transform.position.x + e.transform.parent.position.x;
+                float posX = e.transform.position.x;
 
-            if (screenEdge - Mathf.Abs(posX) < moveDownAmount)
-            {
-                return true;
+
+                if (screenEdge - Mathf.Abs(posX) < moveDownAmount)
+                {
+                    return true;
+                }
+                else
+                {
+                    continue;
+                }
             }
-            else
-            {
-                continue;
-            }
+            return false;
         }
         return false;
     }
 
     void PickShooter()
     {
-        int rnd = Random.Range(0, enemies.Length);
-        enemies[rnd].Shoot();
+        if (enemies.Count > 0)
+        {
+            int rnd = Random.Range(0, enemies.Count);
+            enemies[rnd].Shoot();
+        }
     }
 
     IEnumerator MoveDown()
@@ -71,7 +84,21 @@ public class EnemyGroup : MonoBehaviour {
         yield return new WaitForSeconds(pauseTime);
         transform.position += new Vector3(0, -1, 0);
         InvokeRepeating("MoveTick", initialDelay, delay);
+    }
 
+    public void RemoveEnemy(EnemyAI e)
+    {
+        /*EnemyAI[] enemies2 = enemies;
+        int newCount = enemies.Length;
+        enemies = new EnemyAI[newCount - 1];
+        foreach (EnemyAI enemy in enemies2)
+        {
+            if(enemy != e)
+            {
+                
+            }
+        }*/
+        enemies.Remove(e);
 
     }
 }
