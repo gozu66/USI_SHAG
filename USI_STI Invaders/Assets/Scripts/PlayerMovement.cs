@@ -19,13 +19,13 @@ public class PlayerMovement : MonoBehaviour
 	}
 	void CheckBounds()
 	{
-		if(this.transform.position.x < -5f)
+		if(this.transform.position.x < minX)
 		{
-			this.transform.position = new Vector3(5f, this.transform.position.y, this.transform.position.z);
+			this.transform.position = new Vector3(maxX, this.transform.position.y, this.transform.position.z);
 		}
-		if(this.transform.position.x > 5f)
+		if(this.transform.position.x > maxX)
 		{
-			this.transform.position = new Vector3(-5f, this.transform.position.y, this.transform.position.z);
+			this.transform.position = new Vector3(minX, this.transform.position.y, this.transform.position.z);
 		}
 	}
 }
