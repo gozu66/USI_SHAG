@@ -6,14 +6,22 @@ using UnityEngine.UI;
 public class BulletAI : MonoBehaviour 
 {
 	public float speed;
-	public Text scoreText;
+	public int scoreValue;
+	private ScoreManager scoreManager; 
 
-	private int count;
 	// Use this for initialization
 	void Start () 
 	{
-		count = 0;
-		SetScoreText();
+		GameObject scoreManagerObject = GameObject.FindGameObjectWithTag("ScoreManager");
+		if(scoreManagerObject != null)
+		{
+			scoreManager = scoreManagerObject.GetComponent <ScoreManager>();
+		}
+		if(scoreManager == null)
+		{
+			Debug.Log ("Can't find ScoreManager script");
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -30,14 +38,9 @@ public class BulletAI : MonoBehaviour
 		{
 			//again use this for pooling if need be
 			//other.gameObject.SetActive(false);
-			count += 100;
-			SetScoreText();
+			scoreManager.AddScore(scoreValue);
+
 		}
 	}
-
-	void SetScoreText()
-	{
-		scoreText.text = "Score: " + count.ToString ();
-
-	}
+		
 }
