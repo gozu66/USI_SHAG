@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130cf4b57dff8d24d8201dd4f1a4ffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1726192404151868, guid: 9c83a6de93efaa74eab1f483959772f0, type: 2}
+  bullet: {fileID: 1844055501953038, guid: 79676dd2e75ecd04d8e556eacad8f58d, type: 2}
   firstBullet: 0.01
   fireTime: 0.5
   pooledAmount: 15

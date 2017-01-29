@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114481462145730884}
   - component: {fileID: 61965756513334890}
   - component: {fileID: 50786171852326770}
+  - component: {fileID: 114278508790063226}
   m_Layer: 0
   m_Name: Enemy Bullet
   m_TagString: EnemyBullet
@@ -77,6 +78,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
+--- !u!114 &114278508790063226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844055501953038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923eb93a1f746f94cb8b16d5fb927374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114481462145730884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749944085ea4cc14bbbfb4bb8c3d1272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 10
 --- !u!212 &212805456083375254
 SpriteRenderer:
   m_ObjectHideFlags: 1
