@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
 	public GameObject bullet;
 	public float firstBullet = 0.01f;
-	public float fireTime = 0.5f; 
+	public float fireTime = 0.0f; 
 	public int pooledAmount = 15;
 
 	List<GameObject> bullets;

@@ -15,16 +15,18 @@ public class PlayerMovement : MonoBehaviour
 		float myDir = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
 
 		transform.position += new Vector3(myDir, 0,0f);
-
-		if(transform.position.x < minX)
+		CheckBounds();
+	}
+	void CheckBounds()
+	{
+		if(this.transform.position.x < minX)
 		{
-			transform.position = new Vector3(minX, transform.position.y, transform.position.z);
-
+			this.transform.position = new Vector3(maxX, this.transform.position.y, this.transform.position.z);
 		}
-		else if(transform.position.x > maxX)
+		if(this.transform.position.x > maxX)
 		{
-			transform.position = new Vector3(maxX, transform.position.y, transform.position.z);
-
+			this.transform.position = new Vector3(minX, this.transform.position.y, this.transform.position.z);
 		}
 	}
 }
+

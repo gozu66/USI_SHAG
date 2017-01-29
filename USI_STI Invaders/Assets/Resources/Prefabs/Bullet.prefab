@@ -22,8 +22,12 @@ GameObject:
   - component: {fileID: 212575362239893984}
   - component: {fileID: 114033568137777942}
   - component: {fileID: 114743379834432660}
+<<<<<<< HEAD
   - component: {fileID: 61455970587104000}
   - component: {fileID: 50089255025295012}
+=======
+  - component: {fileID: 61733013091250662}
+>>>>>>> b52944a089ac7089795df7b5e7ac4974717ad17c
   m_Layer: 0
   m_Name: Bullet
   m_TagString: PlayerBullet
@@ -44,6 +48,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!50 &50089255025295012
 Rigidbody2D:
   serializedVersion: 4
@@ -65,6 +70,9 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61455970587104000
+=======
+--- !u!61 &61733013091250662
+>>>>>>> b52944a089ac7089795df7b5e7ac4974717ad17c
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -90,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  scoreText: {fileID: 0}
+  scoreValue: 100
 --- !u!114 &114743379834432660
 MonoBehaviour:
   m_ObjectHideFlags: 1
