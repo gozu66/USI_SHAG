@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public float speed;
+
     void Update()
     {
         Vector3 newPos = transform.position;
