@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
     {
         //Called by animation event
         sm.AddScore(10);
-        this.transform.parent.GetComponent<EnemyGroup>().RemoveEnemy(this);
+        transform.parent.GetComponent<EnemyGroup>().RemoveEnemy(this);
         Destroy(gameObject);
     }
 }

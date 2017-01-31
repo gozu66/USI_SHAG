@@ -986,6 +986,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1844055501953038, guid: c96f791ec1929de44a076981d19ec72b,
         type: 2}
+    - target: {fileID: 114512122880519010, guid: 55bb3821ce7cde941811c80b31172c9d,
+        type: 2}
+      propertyPath: shootIntervile
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55bb3821ce7cde941811c80b31172c9d, type: 2}
   m_IsPrefabParent: 0

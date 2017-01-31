@@ -109,17 +109,10 @@ public class EnemyGroup : MonoBehaviour {
 
     public void RemoveEnemy(EnemyAI e)
     {
-        /*EnemyAI[] enemies2 = enemies;
-        int newCount = enemies.Length;
-        enemies = new EnemyAI[newCount - 1];
-        foreach (EnemyAI enemy in enemies2)
-        {
-            if(enemy != e)
-            {
-                
-            }
-        }*/
         enemies.Remove(e);
-
+        if(enemies.Count <= 0)
+        {
+            GameManager._instance.EndWave(gameObject);
+        }
     }
 }
