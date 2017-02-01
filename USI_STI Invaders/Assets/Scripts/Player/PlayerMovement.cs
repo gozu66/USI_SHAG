@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
+    public static bool canMove = false;
+
 	public float playerSpeed;
 	//public float smoothTime = 0.4f;
 	public float minX = -5.0f;

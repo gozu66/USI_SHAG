@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour {
 
     public GameObject chlamydia, gonorrhea, herpes, gWarts, hiv;
 
-    int[] states = {0, 1, 2, 3, 4, 5, 6, 7};
-    int currState;
+    //int[] states = {0, 1, 2, 3, 4, 5, 6, 7};
+    //int currState;
 
- /*   public enum gameState
+    public enum gameState
     {
         MainMenu, 
         Wave1,
@@ -23,12 +23,13 @@ public class GameManager : MonoBehaviour {
         Winner
     }
     public gameState state;
-    */
+    
 
 	void Start ()
     {
         //Trigger main menu
-        currState = states[0];
+        //currState = states[0];
+        state = gameState.MainMenu;
         if(_instance == null)
         {
             _instance = this;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour {
 	
 	void Update ()
     {
-	/*	switch(state)
+		switch(state)
         {
             case gameState.MainMenu:
                 MainMenu();
@@ -68,7 +69,6 @@ public class GameManager : MonoBehaviour {
                 //
                 break;
         }
-        */
     }
 
     void MainMenu()
@@ -78,22 +78,61 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.F))
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
-            currState = states[1];
+            //currState = states[1];
+            state = gameState.Wave1;
         }
+    }
+
+    void Winner()
+    {
+
+    }
+
+    void Dead()
+    {
+
     }
 
     IEnumerator BeginWave(GameObject waveToSpawn, float wait)
     {
         yield return new WaitForSeconds(wait);          //wait for menu exit anim and/or Wave intro anim
-        //waveToSpawn.SetActive(true);                    
+        waveToSpawn.SetActive(true);                    
     }
 
     public void EndWave(GameObject waveToEnd)
     {
         waveToEnd.SetActive(false);
-        if (currState > 7)
+
+        switch (state)
         {
-            currState = states[currState + 1];
+            case gameState.MainMenu:
+                break;
+            case gameState.Wave1:
+                state = gameState.Wave2;
+                StartCoroutine(BeginWave(gonorrhea, 2.0f));
+                break;
+            case gameState.Wave2:
+                state = gameState.Wave3;
+                StartCoroutine(BeginWave(herpes, 2.0f));
+                break;
+            case gameState.Wave3:
+                state = gameState.Wave4;
+                StartCoroutine(BeginWave(gWarts, 2.0f));
+                break;
+            case gameState.Wave4:
+                state = gameState.Wave5;
+                StartCoroutine(BeginWave(hiv, 2.0f));
+                break;
+            case gameState.Wave5:
+                state = gameState.Winner;
+                break;
+            case gameState.Winner:
+                //
+                break;
+            case gameState.Dead:
+                //
+                break;
         }
+
     }
 }
