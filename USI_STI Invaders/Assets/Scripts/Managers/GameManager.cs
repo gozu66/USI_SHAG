@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager _instance;
 
     public GameObject chlamydia, gonorrhea, herpes, gWarts, hiv;
-
+    public GameObject chlamydiaUI, gonorrheaUI, herpesUI, gWartsUI, hivUI;
     //int[] states = {0, 1, 2, 3, 4, 5, 6, 7};
     //int currState;
 
@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.F))
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
-            //currState = states[1];
             state = gameState.Wave1;
         }
     }
