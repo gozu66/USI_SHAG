@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340431899841550}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -6.28454, y: -3.581491, z: 0}
+  m_LocalPosition: {x: -4.86, y: 1.1739333, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1340431899841550}
   serializedVersion: 5
-  lengthInSec: 0.1
+  lengthInSec: 0.3
   speed: 1
   looping: 1
   prewarm: 0
@@ -96,7 +96,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1221332720
+  randomSeed: -1795737171
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -260,7 +260,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 0
     startSize:
-      scalar: 0.1
+      scalar: 0.15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -494,7 +494,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     randomizeRotationDirection: 0
-    maxNumParticles: 10
+    maxNumParticles: 15
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -539,8 +539,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 3
     enabled: 1
-    type: 1
-    radius: 1
+    type: 0
+    radius: 0.25
     angle: 25
     length: 5
     boxX: 1
@@ -558,12 +558,12 @@ ParticleSystem:
     m_UseMeshColors: 1
     alignToDirection: 0
     randomDirectionAmount: 0
-    sphericalDirectionAmount: 0
+    sphericalDirectionAmount: 1
   EmissionModule:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 1000
+      scalar: 1000000
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -648,8 +648,8 @@ ParticleSystem:
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
-    time0: 0
-    time1: 0
+    time0: 0.1
+    time1: 0.15
     time2: 0
     time3: 0
     m_BurstCount: 0
@@ -894,7 +894,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       maxGradient:
@@ -931,8 +931,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 24479
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -940,7 +940,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -1523,7 +1523,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxis: 0
     inWorldSpace: 0
-    dampen: 0.1
+    dampen: 0.94
   NoiseModule:
     enabled: 0
     strength:
@@ -2705,7 +2705,7 @@ ParticleSystemRenderer:
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 5
+  m_LengthScale: 10.52
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
