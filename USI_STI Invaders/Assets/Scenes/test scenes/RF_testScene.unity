@@ -1459,4 +1459,9 @@ MonoBehaviour:
   herpes: {fileID: 982535869}
   gWarts: {fileID: 858195012}
   hiv: {fileID: 235758283}
+  chlamydiaUI: {fileID: 0}
+  gonorrheaUI: {fileID: 0}
+  herpesUI: {fileID: 0}
+  gWartsUI: {fileID: 0}
+  hivUI: {fileID: 0}
   state: 0
