@@ -7,9 +7,11 @@ public class GameManager : MonoBehaviour {
     public static GameManager _instance;
 
     public GameObject chlamydia, gonorrhea, herpes, gWarts, hiv;
-    public GameObject chlamydiaUI, gonorrheaUI, herpesUI, gWartsUI, hivUI;
+    public GameObject chlamydiaUI, gonorrheaUI, herpesUI, gWartsUI, hivUI, menu, win, lose;
     //int[] states = {0, 1, 2, 3, 4, 5, 6, 7};
     //int currState;
+
+    Animator MenuAnim;
 
     public enum gameState
     {
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        MenuAnim = menu.GetComponent<Animator>();
 	}
 	
 	void Update ()
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour {
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
             state = gameState.Wave1;
+            //MenuAnim.SetTrigger("Out");
         }
     }
 
