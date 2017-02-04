@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 
     Animator MenuAnim;
 
+    bool isPaused;
+
     public enum gameState
     {
         MainMenu, 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour {
         }
 
         MenuAnim = menu.GetComponent<Animator>();
+        
 	}
 	
 	void Update ()
@@ -83,13 +86,13 @@ public class GameManager : MonoBehaviour {
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
             state = gameState.Wave1;
-            //MenuAnim.SetTrigger("Out");
+            MenuAnim.SetTrigger("Out");
         }
     }
 
     void Winner()
     {
-
+        win.SetActive(true);
     }
 
     void Dead()
@@ -99,6 +102,35 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator BeginWave(GameObject waveToSpawn, float wait)
     {
+        switch (state)
+        {
+            case gameState.MainMenu:
+                chlamydiaUI.SetActive(true);
+
+                break;
+            case gameState.Wave1:
+                gonorrheaUI.SetActive(true);
+                break;
+            case gameState.Wave2:
+                herpesUI.SetActive(true);
+                break;
+            case gameState.Wave3:
+                gWarts.SetActive(true);
+                break;
+            case gameState.Wave4:
+                hivUI.SetActive(true);
+                break;
+            case gameState.Wave5:
+                //
+                break;
+            case gameState.Winner:
+                //
+                break;
+            case gameState.Dead:
+                //
+                break;
+        }
+
         yield return new WaitForSeconds(wait);          //wait for menu exit anim and/or Wave intro anim
         waveToSpawn.SetActive(true);                    
     }
@@ -129,14 +161,20 @@ public class GameManager : MonoBehaviour {
                 break;
             case gameState.Wave5:
                 state = gameState.Winner;
+                Winner();
                 break;
             case gameState.Winner:
-                //
+                
                 break;
             case gameState.Dead:
                 //
                 break;
         }
 
+    }
+
+    public void Pause()
+    {
+        isPaused = !isPaused;
     }
 }
