@@ -7,14 +7,21 @@ public class PlayerMovement : MonoBehaviour
     public static bool canMove = false;
 
 	public float playerSpeed;
-	//public float smoothTime = 0.4f;
 	public float minX = -5.0f;
 	public float maxX = 5.0f;
 
-	// Update is called once per frame
+    Animator anim;
+
+    void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+	
 	void Update () 
 	{
 		float myDir = Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime;
+
+        anim.SetInteger("Direction", (int)Input.GetAxis("Horizontal"));
 
 		transform.position += new Vector3(myDir, 0,0f);
 		CheckBounds();

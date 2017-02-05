@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.F))
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
-            state = gameState.Wave1;
             MenuAnim.SetTrigger("Out");
         }
     }
@@ -106,22 +105,21 @@ public class GameManager : MonoBehaviour {
         {
             case gameState.MainMenu:
                 chlamydiaUI.SetActive(true);
-
+                state = gameState.Wave1;
                 break;
             case gameState.Wave1:
-                gonorrheaUI.SetActive(true);
                 break;
             case gameState.Wave2:
-                herpesUI.SetActive(true);
+                gonorrheaUI.SetActive(true);
                 break;
             case gameState.Wave3:
-                gWarts.SetActive(true);
+                herpesUI.SetActive(true);
                 break;
             case gameState.Wave4:
-                hivUI.SetActive(true);
+                gWartsUI.SetActive(true);
                 break;
             case gameState.Wave5:
-                //
+                hivUI.SetActive(true);
                 break;
             case gameState.Winner:
                 //
@@ -142,6 +140,7 @@ public class GameManager : MonoBehaviour {
         switch (state)
         {
             case gameState.MainMenu:
+                state = gameState.Wave1;
                 break;
             case gameState.Wave1:
                 state = gameState.Wave2;
