@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
     public static GameManager _instance;
+    public GameObject player;
 
     public GameObject chlamydia, gonorrhea, herpes, gWarts, hiv;
     public GameObject chlamydiaUI, gonorrheaUI, herpesUI, gWartsUI, hivUI, menu, win, lose;
@@ -73,7 +75,10 @@ public class GameManager : MonoBehaviour {
                 //
                 break;
             case gameState.Dead:
-                //
+                if(Input.anyKeyDown)
+                {
+                    SceneManager.LoadScene(0);
+                }
                 break;
         }
     }
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour {
     {
         //Play menu animation
         //Wait for input
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.anyKeyDown)
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
             MenuAnim.SetTrigger("Out");
@@ -94,9 +99,16 @@ public class GameManager : MonoBehaviour {
         win.SetActive(true);
     }
 
-    void Dead()
+    public void Dead()
     {
-
+        lose.SetActive(true);
+        chlamydia.SetActive(false);
+        gonorrhea.SetActive(false);
+        herpes.SetActive(false);
+        gWarts.SetActive(false);
+        hiv.SetActive(false);
+        player.SetActive(false);
+        state = gameState.Dead;
     }
 
     IEnumerator BeginWave(GameObject waveToSpawn, float wait)

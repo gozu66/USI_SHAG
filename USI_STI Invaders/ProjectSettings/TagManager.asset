@@ -8,6 +8,7 @@ TagManager:
   - ScoreManager
   - EnemyBullet
   - PlayerBullet
+  - Pickup
   layers:
   - Default
   - TransparentFX
