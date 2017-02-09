@@ -12,6 +12,8 @@ public class PlayerHP : MonoBehaviour
 
     bool shielded;
 
+    public GameObject theShield;
+
     void Start () 
 	{
 		playerHP = 100;
@@ -41,6 +43,7 @@ public class PlayerHP : MonoBehaviour
                 //flash shileds
                 other.gameObject.SetActive(false);
                 shielded = false;
+                theShield.GetComponent<Shield>().hit();
             }
         }
 
@@ -48,7 +51,7 @@ public class PlayerHP : MonoBehaviour
         {
             shielded = true;
             other.gameObject.SetActive(false);
-
+            theShield.SetActive(true);
         }
     }
 	void SetHealthText()

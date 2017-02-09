@@ -15,12 +15,18 @@ public class EnemyAI : MonoBehaviour
     public EnemyType enemyType;
 
     public ScoreManager sm;
-    
+
+    Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "PlayerBullet")
         {
-            Die();                              //Destroy enemy instance
+            StartCoroutine(Die());                              //Destroy enemy instance
             other.gameObject.SetActive(false);
         }
     }
@@ -59,10 +65,12 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    void Die()
+    
+    IEnumerator Die()
     {
-        //Called by animation event
-        sm.AddScore(10);
+        anim.SetTrigger("die");
+        yield return new WaitForSeconds(2);
+        sm.AddScore(10);        
         transform.parent.GetComponent<EnemyGroup>().RemoveEnemy(this);
         Destroy(gameObject);
     }
