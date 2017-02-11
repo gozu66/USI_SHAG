@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour {
     //int[] states = {0, 1, 2, 3, 4, 5, 6, 7};
     //int currState;
 
+    public AudioClip noise;
+    AudioSource[] myASs;
+
     Animator MenuAnim;
 
     bool isPaused;
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour {
         }
 
         MenuAnim = menu.GetComponent<Animator>();
-        
+        myASs = GetComponents<AudioSource>();
 	}
 	
 	void Update ()
@@ -117,6 +120,7 @@ public class GameManager : MonoBehaviour {
         {
             case gameState.MainMenu:
                 chlamydiaUI.SetActive(true);
+                myASs[1].Play(10);
                 state = gameState.Wave1;
                 break;
             case gameState.Wave1:

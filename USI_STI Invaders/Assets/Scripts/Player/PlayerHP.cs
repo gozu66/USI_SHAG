@@ -14,6 +14,9 @@ public class PlayerHP : MonoBehaviour
 
     public GameObject theShield;
 
+    public AudioClip hit;
+    public GameObject hitPtl, hitPtl2;
+
     void Start () 
 	{
 		playerHP = 100;
@@ -29,6 +32,10 @@ public class PlayerHP : MonoBehaviour
             //other.gameObject.SetActive(false);
             if (!shielded)
             {
+                AudioSource.PlayClipAtPoint(hit, new Vector3(0, 0, -10));
+                Instantiate(hitPtl, transform.position, Quaternion.identity);
+                Instantiate(hitPtl2, transform.position, Quaternion.identity);
+                CameraShake._camS.StartShake(0.5f);
                 playerHP -= basicDamage;
                 other.gameObject.SetActive(false);
 
