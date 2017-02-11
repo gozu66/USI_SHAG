@@ -18,25 +18,32 @@ public class EnemyAI : MonoBehaviour
 
     Animator anim;
 
+    //public AudioClip hit;
+    public GameObject hitParticle;
+
     void Start()
     {
         anim = GetComponent<Animator>();
     }
+    bool isHit;
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "PlayerBullet")
         {
             StartCoroutine(Die());                              //Destroy enemy instance
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+            //AudioSource.PlayClipAtPoint(hit, new Vector3(0,0,-10));
+            if (!isHit)
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity, transform);
+                isHit = true;
+            }
         }
     }
 
     public GameObject bullet;
     public void Shoot(GameObject aBullet)
     {
-        //GameObject aBullet;
-        //aBullet = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject
-
         switch (enemyType)
         {
             case EnemyType.Chlamydia:
@@ -62,10 +69,8 @@ public class EnemyAI : MonoBehaviour
 
         aBullet.transform.position = transform.position;
         aBullet.SetActive(true);
-
     }
 
-    
     IEnumerator Die()
     {
         anim.SetTrigger("die");

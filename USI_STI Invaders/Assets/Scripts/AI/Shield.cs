@@ -7,6 +7,13 @@ public class Shield : MonoBehaviour
     //public static Shield _instance;
     Animator anim;
 
+    public AudioClip shieldUp, shieldDown;
+
+    void OnEnable()
+    {
+        AudioSource.PlayClipAtPoint(shieldUp, new Vector3(0, 0, -10));
+    }
+
     void Start()
     {
         /*if(_instance != null)
@@ -22,6 +29,7 @@ public class Shield : MonoBehaviour
     public void hit()
     {
         anim.SetTrigger("hit");
+        AudioSource.PlayClipAtPoint(shieldDown, new Vector3(0, 0, -10));
     }
     public void OnAnimEnd()
     {

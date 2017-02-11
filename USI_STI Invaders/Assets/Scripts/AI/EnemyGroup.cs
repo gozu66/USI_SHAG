@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour {
 
-    public float returnPoint;
     public float moveAmount;
     public float pauseTime;
     public float initialDelay, delay;
 
-    public float moveDownAmount = 0.5f;
+    public float moveDownAmount;
 
     public float shootIntervile;
 
@@ -80,9 +79,10 @@ public class EnemyGroup : MonoBehaviour {
                 //float posX = e.transform.position.x + e.transform.parent.position.x;
                 float posX = e.transform.position.x;
 
-
                 if (screenEdge - Mathf.Abs(posX) < moveDownAmount)
                 {
+                    //Debug.Log(screenEdge - Mathf.Abs(posX));
+
                     return true;
                 }
                 else
@@ -116,8 +116,11 @@ public class EnemyGroup : MonoBehaviour {
     IEnumerator MoveDown()
     {
         CancelInvoke("MoveTick");
-        yield return new WaitForSeconds(pauseTime);
-        transform.position += new Vector3(0, -1, 0);
+        yield return new WaitForSeconds(delay);
+        if (transform.position.y > -3.5f)
+        {
+            transform.position += new Vector3(0, -1, 0);
+        }
         InvokeRepeating("MoveTick", initialDelay, delay);
     }
 
@@ -137,7 +140,6 @@ public class EnemyGroup : MonoBehaviour {
     {
         if (!dead)
         {
-
             _pickUps[i].SetActive(true);
             _pickUps[i].transform.position = new Vector2(Random.Range(-8.2f, 8.2f), 11.0f);
             i = (i < 2) ? i += 1 : 0;

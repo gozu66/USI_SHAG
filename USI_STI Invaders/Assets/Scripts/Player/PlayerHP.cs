@@ -22,8 +22,9 @@ public class PlayerHP : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-        if (other.gameObject.tag == "EnemyBullet")
-		{
+        if (other.tag == "EnemyBullet")
+
+        {
             // use this for pooling when ready
             //other.gameObject.SetActive(false);
             if (!shielded)
@@ -52,6 +53,11 @@ public class PlayerHP : MonoBehaviour
             shielded = true;
             other.gameObject.SetActive(false);
             theShield.SetActive(true);
+        }
+        if (other.tag == "Enemy")
+        {
+            playerHP = 0;
+            GameManager._instance.Dead();           
         }
     }
 	void SetHealthText()

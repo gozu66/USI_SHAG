@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
                 //
                 break;
             case gameState.Dead:
-                if(Input.anyKeyDown)
+                if(Input.GetKeyDown(KeyCode.Return))
                 {
                     SceneManager.LoadScene(0);
                 }
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour {
     {
         //Play menu animation
         //Wait for input
-        if(Input.anyKeyDown)
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             StartCoroutine(BeginWave(chlamydia, 2.5f));
             MenuAnim.SetTrigger("Out");

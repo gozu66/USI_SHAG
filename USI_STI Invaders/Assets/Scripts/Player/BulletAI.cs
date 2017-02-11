@@ -19,7 +19,7 @@ public class BulletAI : MonoBehaviour
 		if(other.gameObject.tag == "Enemy")
 		{
 			//again use this for pooling if need be
-			other.gameObject.SetActive(false);
+			//other.gameObject.SetActive(false);
 		}
 	}
 		
