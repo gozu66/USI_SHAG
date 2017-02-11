@@ -32,7 +32,7 @@ public class PlayerHP : MonoBehaviour
             //other.gameObject.SetActive(false);
             if (!shielded)
             {
-                AudioSource.PlayClipAtPoint(hit, new Vector3(0, 0, -10));
+                AudioSource.PlayClipAtPoint(hit, new Vector3(0, 0, -10), 0.4f);
                 Instantiate(hitPtl, transform.position, Quaternion.identity);
                 Instantiate(hitPtl2, transform.position, Quaternion.identity);
                 CameraShake._camS.StartShake(0.5f);
@@ -43,6 +43,10 @@ public class PlayerHP : MonoBehaviour
 
                 if(playerHP <= 0)
                 {
+                    Instantiate(hitPtl, transform.position, Quaternion.identity);
+                    Instantiate(hitPtl, transform.position, Quaternion.identity);
+                    Instantiate(hitPtl, transform.position, Quaternion.identity);
+
                     GameManager._instance.Dead();
                 }
             }

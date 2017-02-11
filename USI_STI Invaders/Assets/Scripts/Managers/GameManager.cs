@@ -120,22 +120,31 @@ public class GameManager : MonoBehaviour {
         {
             case gameState.MainMenu:
                 chlamydiaUI.SetActive(true);
-                myASs[1].Play(10);
+                myASs[1].PlayDelayed(0.5f);
                 state = gameState.Wave1;
+
                 break;
             case gameState.Wave1:
                 break;
             case gameState.Wave2:
                 gonorrheaUI.SetActive(true);
+                myASs[1].PlayDelayed(0.5f);
+
                 break;
             case gameState.Wave3:
                 herpesUI.SetActive(true);
+                myASs[1].PlayDelayed(0.5f);
+
                 break;
             case gameState.Wave4:
                 gWartsUI.SetActive(true);
+                myASs[1].PlayDelayed(0.5f);
+
                 break;
             case gameState.Wave5:
                 hivUI.SetActive(true);
+                myASs[1].PlayDelayed(0.5f);
+
                 break;
             case gameState.Winner:
                 //

@@ -112,16 +112,40 @@ public class EnemyGroup : MonoBehaviour {
             }
         }
     }
-
+    public float lowLimit;
     IEnumerator MoveDown()
     {
         CancelInvoke("MoveTick");
         yield return new WaitForSeconds(delay);
-        if (transform.position.y > -3.5f)
+        /*
+        if (transform.position.y > lowLimit)
+        {
+        }
+        */
+        if(!CheckBottomnEdge())
         {
             transform.position += new Vector3(0, -1, 0);
         }
         InvokeRepeating("MoveTick", initialDelay, delay);
+    }
+
+    bool CheckBottomnEdge()
+    {
+        if (enemies.Count > 0)
+        {
+            foreach (EnemyAI e in enemies)
+            {
+                if(e.transform.position.y < lowLimit)
+                {
+                    return true;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+        return false;
     }
 
     public void RemoveEnemy(EnemyAI e)

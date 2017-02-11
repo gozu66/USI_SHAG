@@ -9,12 +9,15 @@ public class Cover : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         //SPawn Particles
-        if (other.tag == "EnemyBullet" || other.tag == "PlayerBullet")
+        if (other.tag == "EnemyBullet" || other.tag == "PlayerBullet" || other.tag == "Enemy")
         {
-            AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, -10));
+            AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, -10), 0.3f);
             Instantiate(hitPtl, transform.position, Quaternion.identity);
             CameraShake._camS.StartShake(0.25f);
-            other.gameObject.SetActive(false);
+            if (other.tag != "Enemy")
+            {
+                other.gameObject.SetActive(false);
+            }
             Destroy(gameObject);
         }
     }

@@ -11,7 +11,7 @@ public class Shield : MonoBehaviour
 
     void OnEnable()
     {
-        AudioSource.PlayClipAtPoint(shieldUp, new Vector3(0, 0, -10));
+        AudioSource.PlayClipAtPoint(shieldUp, new Vector3(0, 0, -10), 0.7f);
     }
 
     void Start()
@@ -29,7 +29,7 @@ public class Shield : MonoBehaviour
     public void hit()
     {
         anim.SetTrigger("hit");
-        AudioSource.PlayClipAtPoint(shieldDown, new Vector3(0, 0, -10));
+        AudioSource.PlayClipAtPoint(shieldDown, new Vector3(0, 0, -10), 0.5f);
     }
     public void OnAnimEnd()
     {
