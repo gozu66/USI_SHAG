@@ -62,12 +62,14 @@ public class PlayerHP : MonoBehaviour
         if (other.tag == "Pickup")
         {
             shielded = true;
+            ScoreManager._instance.AddScore(50);
             other.gameObject.SetActive(false);
             theShield.SetActive(true);
         }
         if (other.tag == "Enemy")
         {
             playerHP = 0;
+            //CancelInvoke
             GameManager._instance.Dead();           
         }
     }

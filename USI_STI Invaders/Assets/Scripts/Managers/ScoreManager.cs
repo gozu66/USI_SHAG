@@ -6,22 +6,32 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour 
 {
-	public Text scoreText;
+    public static ScoreManager _instance;
+    public Text scoreText;
+
 	public int score;
 
 	void Start () 
 	{
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 		score = 0;
 		updateScore();
 	}
-	    void updateScore()
+	void updateScore()
 	{
 		scoreText.text = "Score: " + score.ToString ();
 	}
 
-    public void AddScore(int newScoreValue)
+    public void AddScore(int amountToAdd)
 	{
-		score += newScoreValue;
+		score += amountToAdd;
 		updateScore();
 	}
 }

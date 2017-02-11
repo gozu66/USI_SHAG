@@ -71,12 +71,19 @@ public class EnemyAI : MonoBehaviour
         aBullet.SetActive(true);
     }
 
+    bool ded;
     IEnumerator Die()
     {
+        ded = true;
         anim.SetTrigger("die");
         yield return new WaitForSeconds(2);
         sm.AddScore(10);        
         transform.parent.GetComponent<EnemyGroup>().RemoveEnemy(this);
         Destroy(gameObject);
+    }
+
+    public bool IsDed()
+    {
+        return ded;
     }
 }

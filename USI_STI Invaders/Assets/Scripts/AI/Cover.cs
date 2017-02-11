@@ -11,7 +11,14 @@ public class Cover : MonoBehaviour {
         //SPawn Particles
         if (other.tag == "EnemyBullet" || other.tag == "PlayerBullet" || other.tag == "Enemy")
         {
-            AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, -10), 0.3f);
+            if (other.tag != "Enemy")
+            {
+                AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, -10), 0.3f);
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(hitAudio, new Vector3(0, 0, -10), 0.03f);
+            }
             Instantiate(hitPtl, transform.position, Quaternion.identity);
             CameraShake._camS.StartShake(0.25f);
             if (other.tag != "Enemy")

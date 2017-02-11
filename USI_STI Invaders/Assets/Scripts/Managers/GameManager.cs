@@ -75,7 +75,10 @@ public class GameManager : MonoBehaviour {
                 //
                 break;
             case gameState.Winner:
-                //
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    SceneManager.LoadScene(0);
+                }
                 break;
             case gameState.Dead:
                 if(Input.GetKeyDown(KeyCode.Return))
@@ -110,6 +113,7 @@ public class GameManager : MonoBehaviour {
         herpes.SetActive(false);
         gWarts.SetActive(false);
         hiv.SetActive(false);
+        player.GetComponent<PlayerShoot>().CancelFireOnDeath();
         player.SetActive(false);
         state = gameState.Dead;
     }

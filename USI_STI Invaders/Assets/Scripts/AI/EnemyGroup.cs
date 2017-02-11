@@ -6,7 +6,7 @@ public class EnemyGroup : MonoBehaviour {
 
     public float moveAmount;
     public float pauseTime;
-    public float initialDelay, delay;
+    public float delay;
 
     public float moveDownAmount;
 
@@ -40,7 +40,7 @@ public class EnemyGroup : MonoBehaviour {
         {
             enemies.Add(ec);
         }
-        InvokeRepeating("MoveTick", initialDelay, delay);
+        InvokeRepeating("MoveTick", delay, delay);
         InvokeRepeating("PickShooter", shootIntervile, shootIntervile);
 
         _pickUps = new GameObject[3];
@@ -100,13 +100,27 @@ public class EnemyGroup : MonoBehaviour {
         if (enemies.Count > 0)
         {
             int rnd = Random.Range(0, enemies.Count);
+            if(enemies[rnd].IsDed())
+            {
+                rnd++;
+                if(rnd >= enemies.Count - 1)
+                {
+                    rnd -= 2;
+                }
+            }
             for (int i = 0; i < bullets.Count; i++)
             {
                 // if the bullets are not active in hierarchy, use it
                 if (!bullets[i].activeInHierarchy)
                 {
                     // this uses bullet from list and sets it to active
-                    enemies[rnd].Shoot(bullets[i]);
+                    try {
+                        enemies[rnd].Shoot(bullets[i]);
+                    }
+                    catch
+                    {
+                        Debug.Log("I should really fix this");
+                    }
                     break;
                 }
             }
@@ -126,7 +140,7 @@ public class EnemyGroup : MonoBehaviour {
         {
             transform.position += new Vector3(0, -1, 0);
         }
-        InvokeRepeating("MoveTick", initialDelay, delay);
+        InvokeRepeating("MoveTick", delay, delay);
     }
 
     bool CheckBottomnEdge()

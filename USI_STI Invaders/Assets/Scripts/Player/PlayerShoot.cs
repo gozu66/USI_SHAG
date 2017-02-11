@@ -50,4 +50,15 @@ public class PlayerShoot : MonoBehaviour
 			}
 		}
 	}
+
+    public void CancelFireOnDeath()
+    {
+        /*
+         * Called on player death to counteract bug where 
+         * player dies before invoke can be cancelled and 
+         * the player keeps shooting rockets post-mortem.
+         */
+
+        CancelInvoke();
+    }
 }
