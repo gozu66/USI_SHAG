@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour {
     //int[] states = {0, 1, 2, 3, 4, 5, 6, 7};
     //int currState;
 
-    public AudioClip noise;
     AudioSource[] myASs;
 
     Animator MenuAnim;
@@ -54,6 +53,12 @@ public class GameManager : MonoBehaviour {
 	
 	void Update ()
     {
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            state = gameState.Winner;
+            Winner();
+        }
+
 		switch(state)
         {
             case gameState.MainMenu:
@@ -99,10 +104,27 @@ public class GameManager : MonoBehaviour {
             MenuAnim.SetTrigger("Out");
         }
     }
-
+    
+    public AudioClip winSound, winMusic;
     void Winner()
     {
         win.SetActive(true);
+        StartCoroutine(WinAudio());
+    }
+
+    IEnumerator WinAudio()
+    {
+        AudioSource aSrc = aSrc = GetComponent<AudioSource>();
+        aSrc.loop = false;
+        aSrc.clip = winSound;
+        aSrc.Play();
+        while(aSrc.isPlaying)
+        {
+            yield return null;
+        }
+        aSrc.clip = winMusic;
+        aSrc.loop = true;
+        aSrc.Play();
     }
 
     public void Dead()

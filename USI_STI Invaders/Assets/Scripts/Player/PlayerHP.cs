@@ -10,12 +10,12 @@ public class PlayerHP : MonoBehaviour
 
 	public int basicDamage = 10;
 
-    bool shielded;
+    bool shielded, dShielded;
 
-    public GameObject theShield;
+    public GameObject theShield, deflectionShield;
 
     public AudioClip hit;
-    public GameObject hitPtl, hitPtl2;
+    public GameObject hitPtl, hitPtl2, hitptl3;
 
     void Start () 
 	{
@@ -26,11 +26,10 @@ public class PlayerHP : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
         if (other.tag == "EnemyBullet")
-
         {
             // use this for pooling when ready
             //other.gameObject.SetActive(false);
-            if (!shielded)
+            if (!shielded && !dShielded)
             {
                 AudioSource.PlayClipAtPoint(hit, new Vector3(0, 0, -10), 0.4f);
                 Instantiate(hitPtl, transform.position, Quaternion.identity);
@@ -50,7 +49,15 @@ public class PlayerHP : MonoBehaviour
                     GameManager._instance.Dead();
                 }
             }
-            else
+            else if (dShielded)
+            {
+                other.tag = "PlayerBullet";
+                other.GetComponent<EnemyBullet>().Reverse();
+                dShielded = false;
+                deflectionShield.GetComponent<Shield>().hit();
+                return;
+            }
+            else if(shielded)
             {
                 //flash shileds
                 other.gameObject.SetActive(false);
@@ -65,6 +72,20 @@ public class PlayerHP : MonoBehaviour
             ScoreManager._instance.AddScore(50);
             other.gameObject.SetActive(false);
             theShield.SetActive(true);
+        }
+        if (other.tag == "Pickup2")
+        {
+            ScoreManager._instance.AddScore(50);
+            other.gameObject.SetActive(false);
+            Instantiate(hitptl3, transform.position, Quaternion.identity);
+            playerHP += basicDamage + 5;
+            SetHealthText();
+        }
+        if (other.tag == "Pickup3")
+        {
+            dShielded = true;
+            ScoreManager._instance.AddScore(50);
+            deflectionShield.SetActive(true);
         }
         if (other.tag == "Enemy")
         {

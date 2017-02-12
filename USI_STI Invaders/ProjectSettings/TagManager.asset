@@ -9,6 +9,8 @@ TagManager:
   - EnemyBullet
   - PlayerBullet
   - Pickup
+  - Pickup2
+  - Pickup3
   layers:
   - Default
   - TransparentFX

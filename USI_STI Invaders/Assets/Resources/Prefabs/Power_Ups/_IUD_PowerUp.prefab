@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50879429689077544}
   m_Layer: 0
   m_Name: _IUD_PowerUp
-  m_TagString: Pickup
+  m_TagString: Pickup2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
