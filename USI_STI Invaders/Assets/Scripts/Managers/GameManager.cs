@@ -53,11 +53,11 @@ public class GameManager : MonoBehaviour {
 	
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.H))
+       /* if(Input.GetKeyDown(KeyCode.H))
         {
             state = gameState.Winner;
             Winner();
-        }
+        }*/
 
 		switch(state)
         {

@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class Link : MonoBehaviour 
 {
-    string facebook = "https://www.facebook.com/sharer/sharer.php?u=usi.ie/", twitter = "https://twitter.com/intent/tweet?text=%20Play%20Escape%20From%20Debt%20Valley%20now%20http://usi.ie/%20@TheUSI";
-    string USI_fb = "https://www.facebook.com/USI.ie/", USI_Tw = "https://twitter.com/TheUSI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor", USI = "http://usi.ie/";
+    string facebook = "https://www.facebook.com/sharer/sharer.php?u=shag.usi.ie/", twitter = "https://twitter.com/intent/tweet?text=%20Play%20Sexually%20Transmitted%20Invaders%20now%20S.H.A.G.%20Week2017%20http://shag.usi.ie/%20@TheUSI";
+    string USI_fb = "https://www.facebook.com/shag.usi.ie/sexually-transmitted-invaders//", USI_Tw = "https://twitter.com/TheUSI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor", USI = "http://shag.usi.ie/";
 
 	public void OpenLinkJSPluginFacebook()
 	{
